@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { tracks } from '../data/tracks';
+import { tracks as staticTracks } from '../data/tracks';
+import axios from 'axios';
 import Controls from './Controls';
 import ProgressBar from './ProgressBar';
 import TrackList from './TrackList';
@@ -29,13 +30,31 @@ const MusicPlayer = ({ user }) => {
     const [role, setRole] = useState(null); // 'host' or 'listener'
     const [users, setUsers] = useState([]); // List of users in room
     const [isVisualizerActive, setIsVisualizerActive] = useState(true);
+    const [dynamicTracks, setDynamicTracks] = useState([]);
+    const [allTracks, setAllTracks] = useState(staticTracks);
 
     // useRef to control the actual audio element
     const audioRef = useRef(null);
     // flag to prevent feedback loops when syncing
     const isInternalUpdate = useRef(false);
 
-    const currentTrack = tracks[currentTrackIndex];
+    const currentTrack = allTracks[currentTrackIndex] || staticTracks[0];
+
+    // Fetch dynamic tracks from backend
+    const fetchSongs = useCallback(async () => {
+        try {
+            const res = await axios.get(`http://${window.location.hostname}:3001/api/songs`);
+            setDynamicTracks(res.data);
+            // Prefix dynamic tracks so they appear first or merge with static
+            setAllTracks([...res.data, ...staticTracks]);
+        } catch (err) {
+            console.error("Failed to fetch songs:", err);
+        }
+    }, []);
+
+    useEffect(() => {
+        fetchSongs();
+    }, [fetchSongs]);
 
     // Helper to emit events only if host
     const emitAction = (action, data = {}) => {
@@ -65,7 +84,7 @@ const MusicPlayer = ({ user }) => {
 
     const handleNext = () => {
         if (role === 'listener') return;
-        const nextIndex = (currentTrackIndex + 1) % tracks.length;
+        const nextIndex = (currentTrackIndex + 1) % allTracks.length;
         setCurrentTrackIndex(nextIndex);
         setIsPlaying(true); // Auto-play next
         emitAction('changeTrack', { trackIndex: nextIndex });
@@ -73,7 +92,7 @@ const MusicPlayer = ({ user }) => {
 
     const handlePrev = () => {
         if (role === 'listener') return;
-        const prevIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+        const prevIndex = (currentTrackIndex - 1 + allTracks.length) % allTracks.length;
         setCurrentTrackIndex(prevIndex);
         setIsPlaying(true);
         emitAction('changeTrack', { trackIndex: prevIndex });
@@ -403,7 +422,7 @@ const MusicPlayer = ({ user }) => {
                     />
 
                     <TrackList
-                        tracks={tracks}
+                        tracks={allTracks}
                         currentIndex={currentTrackIndex}
                         onTrackSelect={handleTrackSelect}
                     />

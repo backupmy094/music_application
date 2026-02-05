@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { Sun, Moon, LogOut } from 'lucide-react';
 import MusicPlayer from './components/MusicPlayer';
 import Auth from './components/Auth';
+import AdminPanel from './components/AdminPanel';
 import './index.css';
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user') || 'null'));
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+  const [showAdmin, setShowAdmin] = useState(false);
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
@@ -46,6 +48,15 @@ function App() {
                 {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
               </button>
               <div className="user-info">
+                {user?.role === 'admin' && (
+                  <button
+                    onClick={() => setShowAdmin(!showAdmin)}
+                    className={`admin-toggle-btn ${showAdmin ? 'active' : ''}`}
+                    title="Toggle Admin Panel"
+                  >
+                    {showAdmin ? '🏠 Player' : '⚙️ Admin'}
+                  </button>
+                )}
                 <span>👤 {user?.username}</span>
                 <button onClick={handleLogout} className="logout-btn" title="Logout">
                   <LogOut size={16} />
@@ -53,7 +64,11 @@ function App() {
               </div>
             </div>
           </header>
-          <MusicPlayer user={user} />
+          {showAdmin && user?.role === 'admin' ? (
+            <AdminPanel user={user} token={token} onBack={() => setShowAdmin(false)} />
+          ) : (
+            <MusicPlayer user={user} />
+          )}
         </div>
       )}
     </div>

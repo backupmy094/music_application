@@ -96,5 +96,138 @@ export const tracks = [
     artist: "Yo Yo Honey Singh",
     audioUrl: "/audio/desi_kalakaar.webm",
     coverImage: "/covers/cinematic1.png"
+  },
+  {
+    id: 15,
+    title: "Apna Bana Le",
+    artist: "Arijit Singh",
+    audioUrl: "/audio/apna_bana_le.mp4",
+    coverImage: "/covers/summer.png"
+  },
+  {
+    id: 16,
+    title: "Besabriyaan",
+    artist: "Armaan Malik",
+    audioUrl: "/audio/besabriyaan.mp4",
+    coverImage: "/covers/groovy.png"
+  },
+  {
+    id: 17,
+    title: "Bebe Bapu",
+    artist: "Prabh Gill",
+    audioUrl: "/audio/bebe_bapu.mp4",
+    coverImage: "/covers/nosleep.png"
+  },
+  {
+    id: 18,
+    title: "Saiyaara",
+    artist: "Arijit Singh",
+    audioUrl: "/audio/saiyaara.mp4",
+    coverImage: "/covers/haseena.png"
+  },
+  {
+    id: 19,
+    title: "O Maahi",
+    artist: "Arijit Singh",
+    audioUrl: "/audio/o_maahi.mp4",
+    coverImage: "/covers/cinematic1.png"
+  },
+  {
+    id: 20,
+    title: "Hawayein",
+    artist: "Arijit Singh",
+    audioUrl: "/audio/hawayein.mp4",
+    coverImage: "/covers/cinematic2.png"
+  },
+  {
+    id: 21,
+    title: "Heeriye",
+    artist: "Jasleen Royal & Arijit Singh",
+    audioUrl: "/audio/heeriye.mp4",
+    coverImage: "/covers/summer.png"
+  },
+  {
+    id: 22,
+    title: "Millionaire (Glory)",
+    artist: "Yo Yo Honey Singh",
+    audioUrl: "/audio/millionaire_glory.mp4",
+    coverImage: "/covers/groovy.png"
+  },
+  {
+    id: 23,
+    title: "Maiyya Mainu",
+    artist: "Sachet-Parampara",
+    audioUrl: "/audio/maiyya_mainu.mp4",
+    coverImage: "/covers/nosleep.png"
+  },
+  {
+    id: 24,
+    title: "Manzar Hai Yeh Naya",
+    artist: "Shashwat Sachdev",
+    audioUrl: "/audio/manzar_hai_yeh_naya.mp4",
+    coverImage: "/covers/haseena.png"
+  },
+  {
+    id: 25,
+    title: "Vaathi Coming",
+    artist: "Anirudh Ravichander",
+    audioUrl: "/audio/vaathi_coming.mp4",
+    coverImage: "/covers/cinematic1.png"
+  },
+  {
+    id: 26,
+    title: "O Rangrez",
+    artist: "Shreya Ghoshal",
+    audioUrl: "/audio/o_rangrez.mp4",
+    coverImage: "/covers/cinematic2.png"
+  },
+  {
+    id: 27,
+    title: "Nee Singam Dhan",
+    artist: "A.R. Rahman",
+    audioUrl: "/audio/nee_singam_dhan.webm",
+    coverImage: "/covers/summer.png"
+  },
+  {
+    id: 28,
+    title: "Powerhouse",
+    artist: "Anirudh Ravichander",
+    audioUrl: "/audio/powerhouse.mp4",
+    coverImage: "/covers/groovy.png"
+  },
+  {
+    id: 29,
+    title: "Qaafirana",
+    artist: "Arijit Singh",
+    audioUrl: "/audio/qaafirana.webm",
+    coverImage: "/covers/nosleep.png"
+  },
+  {
+    id: 30,
+    title: "Tainu Khabar Nahi",
+    artist: "Arijit Singh",
+    audioUrl: "/audio/tainu_khabar_nahi.webm",
+    coverImage: "/covers/haseena.png"
+  },
+  {
+    id: 31,
+    title: "Tere Hawaale",
+    artist: "Arijit Singh",
+    audioUrl: "/audio/tere_hawaale.mp4",
+    coverImage: "/covers/cinematic1.png"
+  },
+  {
+    id: 32,
+    title: "Tere Sang Yaara",
+    artist: "Atif Aslam",
+    audioUrl: "/audio/tere_sang_yaara.mp4",
+    coverImage: "/covers/cinematic2.png"
+  },
+  {
+    id: 33,
+    title: "Ve Kamleya",
+    artist: "Arijit Singh & Shreya Ghoshal",
+    audioUrl: "/audio/ve_kamleya.mp4",
+    coverImage: "/covers/summer.png"
   }
 ];
